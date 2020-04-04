@@ -1,0 +1,95 @@
+const path = require('path')
+const fs = require('fs').promises
+
+const template = fs.readFile(path.join(__dirname, 'release-template.hbs'))
+
+module.exports = {
+  plugins: [
+    [
+      'semantic-release-gitmoji',
+      {
+        releaseRules: {
+          major: [':boom:'],
+          minor: [':sparkles:'],
+          patch: [
+            ':bug:',
+            ':ambulance:',
+            ':lock:',
+            ':art:',
+            ':zap:',
+            ':fire:',
+            ':pencil:',
+            ':lipstick:',
+            ':tada:',
+            ':white_check_mark:',
+            ':apple:',
+            ':penguin:',
+            ':checkered_flag:',
+            ':robot:',
+            ':green_apple:',
+            ':rotating_light:',
+            ':green_heart:',
+            ':arrow_down:',
+            ':arrow_up:',
+            ':pushpin:',
+            ':construction_worker:',
+            ':chart_with_upwards_trend:',
+            ':recycle:',
+            ':whale:',
+            ':heavy_plus_sign:',
+            ':heavy_minus_sign:',
+            ':wrench:',
+            ':globe_with_meridians:',
+            ':pencil2:',
+            ':poop:',
+            ':rewind:',
+            ':package:',
+            ':alien:',
+            ':truck:',
+            ':page_facing_up:',
+            ':bento:',
+            ':ok_hand:',
+            ':wheelchair:',
+            ':bulb:',
+            ':beers:',
+            ':speech_balloon:',
+            ':card_file_box:',
+            ':loud_sound:',
+            ':mute:',
+            ':busts_in_silhouette:',
+            ':children_crossing:',
+            ':building_construction:',
+            ':iphone:',
+            ':clown_face:',
+            ':egg:',
+            ':see_no_evil:',
+            ':camera_flash:',
+            ':alembic:',
+            ':mag:',
+            ':wheel_of_dharma:',
+            ':label:',
+          ],
+        },
+        releaseNotes: {
+          template,
+        },
+      },
+    ],
+    '@semantic-release/changelog',
+    [
+      '@semantic-release/npm',
+      {
+        npmPublish: false,
+      },
+    ],
+    [
+      '@semantic-release/git',
+      {
+        assets: ['package.json', 'CHANGELOG.md'],
+        message:
+          '🚀 Release ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+      },
+    ],
+    '@semantic-release/github',
+  ],
+}
