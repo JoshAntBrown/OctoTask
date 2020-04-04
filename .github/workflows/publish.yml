@@ -1,0 +1,20 @@
+name: Publish
+on:
+  release:
+    types: [created]
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - run: npm ci
+      - run: npm run build
+      - run: echo $(jq --argfile package package.json '.version |= $package["version"]' dist/manifest.json) > dist/manifest.json
+      - shell: bash
+        env:
+          EXTENSION_ID: ${{ secrets.GOOGLE_EXTENSION_ID }}
+          CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+        run: npx webstore upload --source dist --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN
