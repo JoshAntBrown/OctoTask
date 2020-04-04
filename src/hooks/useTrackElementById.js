@@ -17,14 +17,26 @@ export const useTrackElementById = id => {
           for (const removedNode of mutation.removedNodes) {
             if (removedNode.contains(element)) {
               // Find the new element and set the state.
-              setElement(mutation.target.querySelector(`#${id}`))
+              const target = mutation.target.querySelector(`#${id}`)
+              if (target) {
+                setElement(target)
+              } else {
+                setElement(null)
+              }
             }
+          }
+        }
+
+        if (!element && mutation.type === 'childList' && mutation.addedNodes) {
+          const target = mutation.target.querySelector(`#${id}`)
+          if (target) {
+            setElement(target)
           }
         }
       }
     })
 
-    observer.observe(document.getElementsByClassName('repository-content')[0], {
+    observer.observe(document.body, {
       attributes: false,
       childList: true,
       subtree: true,
