@@ -1,3 +1,10 @@
+# [v1.0.5](https://github.com/JoshAntBrown/OctoTask/compare/v1.0.4...v1.0.5) (2020-04-04)
+
+## 🐛 Bug Fixes
+- [`4f55885`](https://github.com/JoshAntBrown/OctoTask/commit/4f55885)  Fix issue where track element looses track of the element 
+
+## 📦 Other Changes
+
 # [v1.0.4](https://github.com/JoshAntBrown/OctoTask/compare/v1.0.3...v1.0.4) (2020-04-04)
 
 ## 🐛 Bug Fixes
