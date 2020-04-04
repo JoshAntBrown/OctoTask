@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "Github Project Tools",
-  "description": "Adds in some features to GitHub to make it better for project management.",
+  "name": "OctoTask",
+  "description": "Enhances the experience of managing tasks on GitHub issues",
   "version": "0.0.1",
   "background": {
     "scripts": ["background.js"]
