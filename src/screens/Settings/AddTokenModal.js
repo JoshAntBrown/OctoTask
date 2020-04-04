@@ -29,11 +29,11 @@ export const AddTokenModal = ({ initialValue, onSave, onClose }) => {
           data-disable-with="Saving…"
           autoFocus
           onClick={() => {
-            if (!value) {
-              // eslint-disable-next-line no-alert
-              alert('You must have entered a token to continue.')
-              return
-            }
+            // if (!value) {
+            //   // eslint-disable-next-line no-alert
+            //   alert('You must have entered a token to continue.')
+            //   return
+            // }
 
             onSave(value)
             onClose()
