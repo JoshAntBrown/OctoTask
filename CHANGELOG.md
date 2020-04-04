@@ -1,3 +1,11 @@
+# [v1.0.2](https://github.com/JoshAntBrown/OctoTask/compare/v1.0.1...v1.0.2) (2020-04-04)
+
+## 🐛 Bug Fixes
+- [`8e6f6f5`](https://github.com/JoshAntBrown/OctoTask/commit/8e6f6f5)  Fix incorrect secret names 
+
+## 📦 Other Changes
+- [`8664df6`](https://github.com/JoshAntBrown/OctoTask/commit/8664df6)  Update webpack config to support production mode
+
 # [v1.0.1](https://github.com/JoshAntBrown/OctoTask/compare/v1.0.0...v1.0.1) (2020-04-04)
 
 ## 📦 Other Changes
