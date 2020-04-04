@@ -1,3 +1,8 @@
+# [v1.0.1](https://github.com/JoshAntBrown/OctoTask/compare/v1.0.0...v1.0.1) (2020-04-04)
+
+## 📦 Other Changes
+- [`4eaf2a3`](https://github.com/JoshAntBrown/OctoTask/commit/4eaf2a3)  Remove build output
+
 # v1.0.0 (2020-04-04)
 
 ## 📦 Other Changes
