@@ -1,3 +1,10 @@
+# [v1.0.4](https://github.com/JoshAntBrown/OctoTask/compare/v1.0.3...v1.0.4) (2020-04-04)
+
+## 🐛 Bug Fixes
+- [`ac64e3a`](https://github.com/JoshAntBrown/OctoTask/commit/ac64e3a)  Fix issue where extension would block user from interacting until a token had been provided 
+
+## 📦 Other Changes
+
 # [v1.0.3](https://github.com/JoshAntBrown/OctoTask/compare/v1.0.2...v1.0.3) (2020-04-04)
 
 ## 📦 Other Changes
