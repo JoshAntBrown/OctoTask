@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const BackgroundOverlay = styled.div`
@@ -57,7 +58,7 @@ const Modal = ({ onClose, children, title }) => {
               <path
                 fillRule="evenodd"
                 d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
-              ></path>
+              />
             </svg>
           </button>
           <h3 className="Box-title mb-0 mt-0">{title}</h3>
@@ -68,6 +69,17 @@ const Modal = ({ onClose, children, title }) => {
       </ModalDialog>
     </>
   )
+}
+Modal.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.node,
+  onClose: PropTypes.func,
+}
+
+Modal.defaultProps = {
+  title: '',
+  children: null,
+  onClose: () => {},
 }
 
 export default Modal

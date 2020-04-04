@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { ClientContext } from 'graphql-hooks'
 import useChromeStorageLocal from '../hooks/useChromeStorageLocal'
 import { AddTokenModal } from '../screens/Settings/AddTokenModal'
@@ -26,6 +27,14 @@ export const GitHubTokenProvider = ({ children }) => {
     )
 
   return <TokenContext.Provider value={token}>{children}</TokenContext.Provider>
+}
+
+GitHubTokenProvider.propTypes = {
+  children: PropTypes.node,
+}
+
+GitHubTokenProvider.defaultProps = {
+  children: null,
 }
 
 export const useGitHubToken = () => {

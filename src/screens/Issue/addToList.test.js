@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { addToList } from './addToList'
 
 const issues = {

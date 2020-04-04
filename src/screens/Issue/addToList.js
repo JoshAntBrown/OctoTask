@@ -7,8 +7,6 @@ export const addToList = (issueBody, task) => {
       const listItemRegex = /^- *?\[[ x]\]/gm
       const currentLineIsListItem = !!line.match(listItemRegex)
 
-      console.log(`${idx}: ${line}`)
-
       if (state.inList === null) {
         if (currentLineIsListItem) {
           const nextListIdx = Object.values(state.lists).length
