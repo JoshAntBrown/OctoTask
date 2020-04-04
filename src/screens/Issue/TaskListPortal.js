@@ -1,7 +1,7 @@
 import React, { useState, useReducer } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { useQuery, useManualQuery, useMutation } from 'graphql-hooks'
-import useChromeStorageLocal from '../../hooks/useChromeStorageLocal'
 import { addToList } from './addToList'
 
 const Form = styled.form`
@@ -10,38 +10,6 @@ const Form = styled.form`
   border: 1px solid #c0d3eb;
   padding: 12px;
   border-radius: 4px;
-`
-
-const BackgroundOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 80;
-  display: block;
-  cursor: default;
-  content: ' ';
-  background: transparent;
-  z-index: 99;
-  background: rgba(27, 31, 35, 0.5);
-`
-
-const ModalDialog = styled.div.attrs({
-  className:
-    'Box Box--overlay d-flex flex-column anim-fade-in fast f5 overflow-auto',
-  role: 'dialog',
-  'aria-modal': true,
-})`
-  position: fixed;
-  margin: 10vh auto;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 999;
-  max-height: 80vh;
-  max-width: 90vw;
-  width: 448px;
 `
 
 const initialState = {
@@ -121,13 +89,11 @@ export const TaskListPortal = ({ listIdx }) => {
       url: window.location.href,
     },
   })
-  const { loading, error, data } = useQuery(GET_RESOURCE, {
+  const { loading, data } = useQuery(GET_RESOURCE, {
     variables: {
       url: window.location.href,
     },
   })
-
-  const onClose = () => setAddingTask(false)
 
   const setValue = (key, value) => {
     dispatch({
@@ -210,9 +176,9 @@ export const TaskListPortal = ({ listIdx }) => {
             className="form-control js-quick-submit flex-auto input-m input-contrast mr-0"
             placeholder="Repository (blank defaults to current organisation)"
             value={state.repoNameWithOwner}
-            onChange={event =>
+            onChange={event => {
               setValue('repoNameWithOwner', event.target.value)
-            }
+            }}
           />
           <div className="d-block mt-md-2">
             <button
@@ -234,6 +200,7 @@ export const TaskListPortal = ({ listIdx }) => {
         </Form>
       ) : (
         <button
+          type="button"
           className="btn btn-sm mt-md-1"
           onClick={() => {
             setAddingTask(true)
@@ -244,4 +211,8 @@ export const TaskListPortal = ({ listIdx }) => {
       )}
     </>
   )
+}
+
+TaskListPortal.propTypes = {
+  listIdx: PropTypes.number.isRequired,
 }

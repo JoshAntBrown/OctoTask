@@ -1,11 +1,11 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { useLocation } from 'react-router-dom'
 import { useQuery } from 'graphql-hooks'
+import unique from 'unique-selector'
 import { useTrackElementById } from '../../hooks/useTrackElementById'
 import { usePortalGenerator } from '../../hooks/usePortalGenerator'
 import { TaskListPortal } from './TaskListPortal'
-import { useMarkdownToLists } from './useMarkdownToLists'
 
 const GET_RESOURCE = `
   query GetResource($url: URI!) {
@@ -27,7 +27,7 @@ const GET_RESOURCE = `
 export const Issue = () => {
   const { getPortalElement } = usePortalGenerator()
   const { pathname } = useLocation()
-  const { data, refetch } = useQuery(GET_RESOURCE, {
+  const { data } = useQuery(GET_RESOURCE, {
     variables: {
       url: pathname,
     },
@@ -48,9 +48,9 @@ export const Issue = () => {
     <>
       {listElements.map((listElement, idx) => {
         const portalElement = getPortalElement(`list-${idx}`, listElement)
-
+        const key = unique(listElement)
         return (
-          <div key={`list-${idx}`}>
+          <div key={key}>
             {ReactDOM.createPortal(
               <TaskListPortal listIdx={idx} />,
               portalElement,

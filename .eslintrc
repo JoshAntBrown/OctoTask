@@ -10,6 +10,7 @@
     "no-confusing-arrow": "off",
     "jsx-a11y/accessible-emoji": "off",
     "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
     "react/forbid-prop-types": "warn",
     "react/jsx-filename-extension": "off",
     "react/no-multi-comp": "warn",
@@ -21,7 +22,8 @@
     "no-mixed-operators": ["error", { "allowSamePrecedence": true }],
     "max-len": 0,
     "semi": ["error", "never"],
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "jsx-a11y/no-autofocus": "off"
   },
   "settings": {
     "import/resolver": {

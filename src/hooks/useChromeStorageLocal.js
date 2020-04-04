@@ -1,3 +1,5 @@
+/* global chrome */
+
 import { useState, useEffect } from 'react'
 
 const useChromeStorageLocal = target => {
@@ -10,8 +12,9 @@ const useChromeStorageLocal = target => {
       setInitialising(false)
     })
 
-    const onStorageChange = (changes, namespace) => {
-      for (var key in changes) {
+    const onStorageChange = changes => {
+      // eslint-disable-next-line no-restricted-syntax
+      for (const key in changes) {
         if (key === target) {
           setValue(changes[key].newValue)
         }

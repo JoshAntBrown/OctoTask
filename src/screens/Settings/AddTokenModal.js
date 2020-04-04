@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import Modal from '../../components/Modal'
 
-export const AddTokenModal = ({ initialValue, onSave, onClose = () => {} }) => {
+export const AddTokenModal = ({ initialValue, onSave, onClose }) => {
   const [value, setValue] = useState(initialValue)
 
   return (
-    <Modal title={`Project Tools Settings`} onClose={onClose}>
+    <Modal title="Project Tools Settings" onClose={onClose}>
       <div className="d-flex flex-column p-3">
         <p>
           Using this extension requires a GitHub access token.
@@ -29,6 +30,7 @@ export const AddTokenModal = ({ initialValue, onSave, onClose = () => {} }) => {
           autoFocus
           onClick={() => {
             if (!value) {
+              // eslint-disable-next-line no-alert
               alert('You must have entered a token to continue.')
               return
             }
@@ -40,7 +42,7 @@ export const AddTokenModal = ({ initialValue, onSave, onClose = () => {} }) => {
           Save
         </button>
         <button
-          type="reset"
+          type="button"
           className="btn"
           data-close-dialog=""
           onClick={onClose}
@@ -50,4 +52,16 @@ export const AddTokenModal = ({ initialValue, onSave, onClose = () => {} }) => {
       </div>
     </Modal>
   )
+}
+
+AddTokenModal.propTypes = {
+  initialValue: PropTypes.string,
+  onSave: PropTypes.func,
+  onClose: PropTypes.func,
+}
+
+AddTokenModal.defaultProps = {
+  initialValue: null,
+  onSave: () => {},
+  onClose: () => {},
 }

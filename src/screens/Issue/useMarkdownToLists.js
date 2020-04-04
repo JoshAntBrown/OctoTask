@@ -8,7 +8,7 @@ export const useMarkdownToLists = data => {
     const tokens = marked.lexer(data.resource.body)
 
     const result = tokens.reduce(
-      (state, token, idx) => {
+      (state, token) => {
         // Ignore everything when we're not starting a list or adding to one
         if (token.type !== 'list_start' && state.inList === null) return state
 
