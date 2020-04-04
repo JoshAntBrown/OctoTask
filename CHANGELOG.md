@@ -1,3 +1,8 @@
+# [v1.0.3](https://github.com/JoshAntBrown/OctoTask/compare/v1.0.2...v1.0.3) (2020-04-04)
+
+## 📦 Other Changes
+- [`62a79dd`](https://github.com/JoshAntBrown/OctoTask/commit/62a79dd)  Fix issues raised by linting
+
 # [v1.0.2](https://github.com/JoshAntBrown/OctoTask/compare/v1.0.1...v1.0.2) (2020-04-04)
 
 ## 🐛 Bug Fixes
